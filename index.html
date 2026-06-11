@@ -794,14 +794,41 @@
 
         // ─── RENDER FUNCTIONS ────────────────────────────────────────────────
 
-        function renderParticipants() {
-            document.getElementById('participantsGrid').innerHTML = results.map(r =>
-                `<div class="participant-card">
-                    <div class="participant-name">${r.participant}</div>
-                    <div class="participant-team">${flagImg(r.code)}${r.country}</div>
-                </div>`
-            ).join('');
-        }
+function renderParticipants() {
+    const grouped = results.reduce((acc, r) => {
+        if (!acc[r.participant]) acc[r.participant] = [];
+        acc[r.participant].push(r);
+        return acc;
+    }, {});
+
+    document.getElementById('participantsGrid').innerHTML = Object.entries(grouped)
+        .map(([player, teams]) => `
+            <div style="
+                grid-column: 1 / -1;
+                margin-top: 1rem;
+            ">
+                <h3 style="
+                    margin: 0.5rem 0;
+                    color: #f5a623;
+                    font-size: 1.2rem;
+                    letter-spacing: 1px;
+                ">
+                    ${player}
+                </h3>
+
+                <div class="participants-grid" style="margin-top:0.5rem;">
+${teams.map(t => `
+    <div class="participant-card">
+        <div class="participant-team">
+            ${flagImg(t.code)} ${t.country}
+        </div>
+    </div>
+`).join('')}
+                </div>
+            </div>
+        `)
+        .join('');
+}
 
         function renderCountries() {
             const sorted = [...countries].sort((a, b) => a.name.localeCompare(b.name));
