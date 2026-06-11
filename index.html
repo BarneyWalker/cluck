@@ -788,7 +788,10 @@
         // ─── RENDER FUNCTIONS ────────────────────────────────────────────────
 
         function renderParticipants() {
-            document.getElementById('participantsGrid').innerHTML = results.map(r =>
+            const sortedResults = [...results].sort((a, b) =>
+                a.participant.localeCompare(b.participant) || a.country.localeCompare(b.country)
+            );
+            document.getElementById('participantsGrid').innerHTML = sortedResults.map(r =>
                 `<div class="participant-card">
                     <div class="participant-name">${r.participant}</div>
                     <div class="participant-team">${flagImg(r.code)}${r.country}</div>
