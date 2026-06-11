@@ -357,6 +357,18 @@
         .third-place { text-align: center; margin-top: 1rem; padding: 0.5rem; }
         .third-place h4 { color: #f5a623; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.3rem; }
 
+        
+        .forfeits-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 1rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .forfeits-table { width:100%; border-collapse: collapse; }
+        .forfeits-table td, .forfeits-table th { padding:0.75rem; border-bottom:1px solid rgba(255,255,255,0.08); text-align:left; }
+
         @media (max-width: 600px) {
             .header h1 { font-size: 1.8rem; }
             .participants-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
@@ -381,6 +393,7 @@
         <button class="tab-btn active" data-tab="groups">Groups</button>
         <button class="tab-btn" data-tab="matches">Group Matches</button>
         <button class="tab-btn" data-tab="bracket">Knockout Bracket</button>
+        <button class="tab-btn" data-tab="forfeits">Forfeits</button>
     </div>
 
     <div class="tab-content" id="tab-participants">
@@ -398,6 +411,7 @@
     <div class="tab-content" id="tab-bracket">
         <div class="bracket-section" id="bracketSection"></div>
     </div>
+    <div class="tab-content" id="tab-forfeits"><div id="forfeitsSection"></div></div>
 
     <script>
         // ─── SWEEPSTAKE DATA ─────────────────────────────────────────────────
@@ -934,6 +948,26 @@
             `;
         }
 
+        
+        function renderForfeits() {
+            document.getElementById('forfeitsSection').innerHTML = `
+                <div class="forfeits-card">
+                    <h3 style="color:#f5a623;margin-bottom:1rem;">Forfeit Prizes</h3>
+                    <table class="forfeits-table">
+                        <tr><th>Prize</th><th>Rule</th></tr>
+                        <tr><td>Prize 1</td><td>Worst Team (within our pots)</td></tr>
+                        <tr><td>Prize 2</td><td>Team containing Golden Boot Winner (tie breakers sorted by total team goals)</td></tr>
+                        <tr><td>Prize 3</td><td>Most bookings based on booking points (10 points for yellow, 25 points for red)</td></tr>
+                        <tr><td>Prize 4</td><td>Least goals scored</td></tr>
+                        <tr><td>Prize 5</td><td>Least goals conceded</td></tr>
+                        <tr><td>Prize 6</td><td>Fastest goal</td></tr>
+                        <tr><td>Prize 7</td><td>Quickest red card</td></tr>
+                        <tr><td>Prize 8</td><td>Most penalties conceded</td></tr>
+                    </table>
+                </div>`;
+        }
+
+
         // ─── POLLING & INIT ──────────────────────────────────────────────────
 
         let pollInterval = null;
@@ -956,6 +990,7 @@
             renderGroups();
             renderMatches();
             renderBracket();
+            renderForfeits();
         }
 
         function initTabs() {
