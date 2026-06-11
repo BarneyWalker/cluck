@@ -416,54 +416,61 @@
     <script>
         // ─── SWEEPSTAKE DATA ─────────────────────────────────────────────────
         const results = [
-            { participant: "Sez", country: "Japan", code: "jp" },
+            { participant: "Barn", country: "England", code: "gb-eng" },
             { participant: "Barn", country: "Belgium", code: "be" },
-            { participant: "Sam", country: "Algeria", code: "dz" },
-            { participant: "Josh", country: "Switzerland", code: "ch" },
-            { participant: "Sez", country: "Paraguay", code: "py" },
-            { participant: "Sam", country: "Canada", code: "ca" },
-            { participant: "Jordan", country: "Scotland", code: "gb-sct" },
-            { participant: "Sez", country: "Haiti", code: "ht" },
+            { participant: "Barn", country: "Uruguay", code: "uy" },
+            { participant: "Barn", country: "USA", code: "us" },
+            { participant: "Barn", country: "Congo DR", code: "cd" },
             { participant: "Barn", country: "Tunisia", code: "tn" },
+
+            { participant: "Hen", country: "Brazil", code: "br" },
+            { participant: "Hen", country: "Senegal", code: "sn" },
+            { participant: "Hen", country: "Ecuador", code: "ec" },
+            { participant: "Hen", country: "Czechia", code: "cz" },
+            { participant: "Hen", country: "Australia", code: "au" },
+            { participant: "Hen", country: "Iran", code: "ir" },
+
+            { participant: "Gabe", country: "Argentina", code: "ar" },
+            { participant: "Gabe", country: "Morocco", code: "ma" },
+            { participant: "Gabe", country: "Sweden", code: "se" },
+            { participant: "Gabe", country: "Mexico", code: "mx" },
+            { participant: "Gabe", country: "Uzbekistan", code: "uz" },
+            { participant: "Gabe", country: "Bosnia and Herzegovina", code: "ba" },
+
+            { participant: "Jordan", country: "Netherlands", code: "nl" },
+            { participant: "Jordan", country: "Colombia", code: "co" },
+            { participant: "Jordan", country: "Côte d'Ivoire", code: "ci" },
+            { participant: "Jordan", country: "Scotland", code: "gb-sct" },
+            { participant: "Jordan", country: "Ghana", code: "gh" },
+            { participant: "Jordan", country: "Jordan", code: "jo" },
+
             { participant: "Josh", country: "Spain", code: "es" },
+            { participant: "Josh", country: "Turkey", code: "tr" },
+            { participant: "Josh", country: "Switzerland", code: "ch" },
+            { participant: "Josh", country: "Austria", code: "at" },
+            { participant: "Josh", country: "Egypt", code: "eg" },
+            { participant: "Josh", country: "Panama", code: "pa" },
+
+            { participant: "Sam", country: "Portugal", code: "pt" },
+            { participant: "Sam", country: "Norway", code: "no" },
+            { participant: "Sam", country: "Croatia", code: "hr" },
+            { participant: "Sam", country: "Algeria", code: "dz" },
+            { participant: "Sam", country: "Canada", code: "ca" },
+            { participant: "Sam", country: "New Zealand", code: "nz" },
+
+            { participant: "Sez", country: "France", code: "fr" },
+            { participant: "Sez", country: "Germany", code: "de" },
+            { participant: "Sez", country: "Japan", code: "jp" },
+            { participant: "Sez", country: "Paraguay", code: "py" },
+            { participant: "Sez", country: "South Korea", code: "kr" },
+            { participant: "Sez", country: "Haiti", code: "ht" },
+
             { participant: "CLUCKERS", country: "Curaçao", code: "cw" },
             { participant: "CLUCKERS", country: "South Africa", code: "za" },
-            { participant: "Jordan", country: "Netherlands", code: "nl" },
-            { participant: "Jordan", country: "Ghana", code: "gh" },
-            { participant: "Gabe", country: "Morocco", code: "ma" },
-            { participant: "Gabe", country: "Mexico", code: "mx" },
-            { participant: "Hen", country: "Senegal", code: "sn" },
-            { participant: "Gabe", country: "Bosnia and Herzegovina", code: "ba" },
-            { participant: "Sam", country: "New Zealand", code: "nz" },
             { participant: "CLUCKERS", country: "Iraq", code: "iq" },
-            { participant: "Josh", country: "Egypt", code: "eg" },
-            { participant: "Sam", country: "Portugal", code: "pt" },
             { participant: "CLUCKERS", country: "Saudi Arabia", code: "sa" },
-            { participant: "Gabe", country: "Uzbekistan", code: "uz" },
-            { participant: "Hen", country: "Ecuador", code: "ec" },
             { participant: "CLUCKERS", country: "Cabo Verde", code: "cv" },
-            { participant: "Josh", country: "Turkey", code: "tr" },
-            { participant: "Sez", country: "South Korea", code: "kr" },
-            { participant: "Jordan", country: "Colombia", code: "co" },
-            { participant: "Josh", country: "Austria", code: "at" },
-            { participant: "Josh", country: "Panama", code: "pa" },
-            { participant: "Gabe", country: "Sweden", code: "se" },
-            { participant: "Barn", country: "Uruguay", code: "uy" },
-            { participant: "Gabe", country: "Argentina", code: "ar" },
-            { participant: "Barn", country: "Congo DR", code: "cd" },
-            { participant: "Sez", country: "France", code: "fr" },
-            { participant: "Hen", country: "Czechia", code: "cz" },
-            { participant: "Jordan", country: "Côte d'Ivoire", code: "ci" },
-            { participant: "CLUCKERS", country: "Qatar", code: "qa" },
-            { participant: "Hen", country: "Australia", code: "au" },
-            { participant: "Sez", country: "Germany", code: "de" },
-            { participant: "Jordan", country: "Jordan", code: "jo" },
-            { participant: "Barn", country: "USA", code: "us" },
-            { participant: "Sam", country: "Norway", code: "no" },
-            { participant: "Hen", country: "Brazil", code: "br" },
-            { participant: "Barn", country: "England", code: "gb-eng" },
-            { participant: "Sam", country: "Croatia", code: "hr" },
-            { participant: "Hen", country: "Iran", code: "ir" }
+            { participant: "CLUCKERS", country: "Qatar", code: "qa" }
         ];
 
         const countries = [
@@ -788,10 +795,7 @@
         // ─── RENDER FUNCTIONS ────────────────────────────────────────────────
 
         function renderParticipants() {
-            const sortedResults = [...results].sort((a, b) =>
-                a.participant.localeCompare(b.participant) || a.country.localeCompare(b.country)
-            );
-            document.getElementById('participantsGrid').innerHTML = sortedResults.map(r =>
+            document.getElementById('participantsGrid').innerHTML = results.map(r =>
                 `<div class="participant-card">
                     <div class="participant-name">${r.participant}</div>
                     <div class="participant-team">${flagImg(r.code)}${r.country}</div>
